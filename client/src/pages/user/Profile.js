@@ -5,6 +5,8 @@ import { useAuth } from '../../context/auth'
 import toast from 'react-hot-toast'
 import axios from 'axios'
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Profile = () => {
   
   //context
@@ -28,7 +30,7 @@ const Profile = () => {
 const handleSubmmit=async(e)=>{
   e.preventDefault()
   try {
-    const {data}=await axios.put('/api/v1/auth/profile',
+    const {data}=await axios.put(`${API_BASE_URL}/api/v1/auth/profile`,
     {username,emailid,password,shippingaddress});
   if(data?.error){
     toast.error(data?.error)

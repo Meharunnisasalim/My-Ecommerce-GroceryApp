@@ -9,6 +9,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import '../Styles/CartStyles.css'
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
   const [cart, setCart] = useCart();
@@ -48,7 +50,7 @@ const CartPage = () => {
   //get payment gateway token
   const getToken = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/braintree/token");
+      const { data } = await axios.get(`${API_BASE_URL}/api/v1/product/braintree/token`);
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -63,7 +65,7 @@ const CartPage = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      const { data } = await axios.post("/api/v1/product/braintree/payment", {
+      const { data } = await axios.post(`${API_BASE_URL}/api/v1/product/braintree/payment`, {
         nonce,
         cart,
       });

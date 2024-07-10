@@ -34,6 +34,8 @@ import { Outlet } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../Spinner";
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export default function PrivateRouter() {
   const [ok, setOk] = useState(false);
   //eslint-disable-next-line
@@ -42,7 +44,7 @@ export default function PrivateRouter() {
 
   useEffect(() => {
     const authCheck = async () => {
-      const res = await axios.get("/api/v1/auth/user-auth");
+      const res = await axios.get(`${API_BASE_URL}/api/v1/auth/user-auth`);
 
       if (res.data.ok) {
         setOk(true);

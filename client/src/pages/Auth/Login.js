@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useNavigate ,useLocation} from 'react-router-dom';
 import { useAuth } from '../../context/auth';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Login = () => {
   const [emailid, setEmailId] = useState('');
   const [password, setPassword] = useState('');
@@ -22,7 +24,7 @@ const Login = () => {
   const handleSubmmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/v1/auth/login', {
+      const res = await axios.post(`${API_BASE_URL}/api/v1/auth/login`, {
         emailid,
         password,
       });

@@ -1,10 +1,9 @@
 import React from 'react'
 import { useSearch } from '../../context/search';
-// import { useData } from '../../context/data';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-// const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const SearchInput = () => {
     const [values,setValues]=useSearch();
@@ -14,7 +13,7 @@ const SearchInput = () => {
    const handleSubmit=async(e)=>{
     e.preventDefault()
 try {
-    const {data}=await axios.get(`/api/v1/product/search/${values.keyword}`)
+    const {data}=await axios.get(`${API_BASE_URL}/api/v1/product/search/${values.keyword}`)
     setValues({...values,results:data});
     navigate('/search');
 } catch (error) {

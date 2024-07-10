@@ -6,6 +6,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../../Styles/Authstyles.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Register = () => {
  
   const [username,setUserName]=useState("");
@@ -19,7 +21,7 @@ const Register = () => {
     const handleSubmmit=async(e)=>{
       e.preventDefault()
       try {
-        const res=await axios.post('/api/v1/auth/register',
+        const res=await axios.post(`${API_BASE_URL}/api/v1/auth/register`,
         {username,emailid,password,shippingaddress,answer});
 
         if(res && res.data.success){

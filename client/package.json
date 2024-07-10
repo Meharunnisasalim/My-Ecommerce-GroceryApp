@@ -1,8 +1,7 @@
 {
   "name": "grocery-shopping",
-  "proxy": "https://grocery-app-back-end-8.onrender.com",
   "version": "1.0.0",
-  "private": "true",
+  "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -19,7 +18,6 @@
     "braintree": "^3.23.0",
     "braintree-web-drop-in-react": "^1.2.1",
     "cors": "^2.8.5",
-    "express": "^4.19.2",
     "moment": "^2.30.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

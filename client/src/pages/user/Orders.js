@@ -5,13 +5,15 @@ import axios from "axios";
 import { useAuth } from "../../context/auth";
 import moment from "moment";
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [auth, setAuth] = useAuth();
 
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/orders");
+      const { data } = await axios.get(`${API_BASE_URL}/api/v1/auth/orders`);
       setOrders(data);
     } catch (error) {
       console.log(error);

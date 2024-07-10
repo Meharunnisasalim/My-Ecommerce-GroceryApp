@@ -4,6 +4,8 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import '../Styles/ProductDetailsStyles.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const ProductDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ const ProductDetails = () => {
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/get-product/${params.slug}`
+        `${API_BASE_URL}/api/v1/product/get-product/${params.slug}`
       );
       setProduct(data?.product);
       getSimilarProduct(data?.product._id, data?.product.category._id);
@@ -30,7 +32,7 @@ const ProductDetails = () => {
   const getSimilarProduct = async (pid, cid) => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/related-product/${pid}/${cid}`
+        `${API_BASE_URL}/api/v1/product/related-product/${pid}/${cid}`
       );
       setRelatedProducts(data?.products);
     } catch (error) {
