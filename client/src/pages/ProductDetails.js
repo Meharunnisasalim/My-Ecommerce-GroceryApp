@@ -41,7 +41,6 @@ const ProductDetails = () => {
       console.log(error);
     }
   };
-
   return (
     <Layout>
       <div className="row container product-details">
