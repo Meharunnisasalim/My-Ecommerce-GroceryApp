@@ -97,7 +97,7 @@ const ProductDetails = () => {
                 <div className="card-name-price">
                   <button
                     className="btn btn-info ms-1"
-                    onClick={() => navigate(`${API_BASE_URL}/product/${p.slug}`)}
+                    onClick={() => navigate(`/product/${p.slug}`)}
                   >
                     More Details
                   </button>
